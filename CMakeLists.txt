@@ -38,7 +38,7 @@ target_include_directories(Slefh
 
 target_link_libraries(Slefh
   INTERFACE  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/libslefh.so>
-             $<INSTALL_INTERFACE:${Slefh_LIB_INSTALL_DIR}/libslefh.so>
+             $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${Slefh_LIB_INSTALL_DIR}/libslefh.so>
   )
 
 #=================================================================================
@@ -58,7 +58,6 @@ install(DIRECTORY lib/
 
 install(TARGETS Slefh EXPORT Slefh_export)
 
-# TODO: library path in export target file is relative path, which is not correct
 install(EXPORT Slefh_export
   NAMESPACE Slefh::
   FILE SlefhTargets.cmake
